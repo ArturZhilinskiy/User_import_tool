@@ -35,7 +35,6 @@ ehthumbs.db
 $RECYCLE.BIN/
 .eslintignore
 .forceignore
-README.md
 sfdx-project.json
 .vscode/extensions.json
 .vscode/launch.json
