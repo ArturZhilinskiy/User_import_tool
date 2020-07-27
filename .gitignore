@@ -48,3 +48,4 @@ scripts/soql/account.soql
 package.json
 .prettierrc
 .prettierignore
+.vim-force.com/session.properties
