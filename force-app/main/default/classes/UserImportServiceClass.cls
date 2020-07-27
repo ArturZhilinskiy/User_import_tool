@@ -23,8 +23,6 @@ public with sharing class UserImportServiceClass {
                 }
             }
             resultData.importStatus = 'SUCCESS';
-        } else {
-            resultData.importStatus = 'ERROR';
         }
 
         return resultData;
@@ -67,8 +65,8 @@ public with sharing class UserImportServiceClass {
     }
 
     private with sharing class ImportResultData {
-        private Integer importedRecords {get; set;}
-        private Integer updatedRecords {get; set;}
-        private String importStatus {get; set;}
+        private Integer importedRecords = 0;
+        private Integer updatedRecords = 0;
+        private String importStatus = 'ERROR';
     }
 }
