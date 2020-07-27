@@ -1,6 +1,6 @@
 import { LightningElement, track } from 'lwc';
 import { NavigationMixin } from 'lightning/navigation';
-//import getImportResults from '@salesforce/apex/ContactController.getImportResults';
+import importUsers from '@salesforce/apex/UserImportServiceClass.importUsers';
 
 
 export default class Uit_userImportTool extends NavigationMixin(LightningElement) {
@@ -17,27 +17,28 @@ export default class Uit_userImportTool extends NavigationMixin(LightningElement
         this.isLoading = true;
 
         
-        // getImportResults()
-        //     .then(result => {
-        //         this.importResult = result;
+        importUsers()
+            .then(result => {
+                this.importResult = result;
                 
-        //         this.isLoading=false;
-        //         this.isDataRecived = true;
-        //     })
-        //     .catch(error => {
-        //         this.importResult = {
-        //             importedRecords : 0,
-        //             updatedRecords : 0,
-        //             importStatus : 'Error: ' + error
-        //         };
-        //         this.isLoading=false;
-        //         this.isDataRecived = true;
-        //     });
+                this.isLoading=false;
+                this.isDataRecived = true;
+            })
+            .catch(error => {
+                this.importResult = {
+                    importedRecords : 0,
+                    updatedRecords : 0,
+                    importStatus : 'Error: ' + error.body.message + ' ' + error.body.stackTrace
+                };
+                console.log(error);
+                this.isLoading=false;
+                this.isDataRecived = true;
+            });
 
-        setTimeout(() => {
-            this.isLoading = false;
-            this.isDataRecived = true;
-        }, 2000);
+        // setTimeout(() => {
+        //     this.isLoading = false;
+        //     this.isDataRecived = true;
+        // }, 2000);
 
         
     }
