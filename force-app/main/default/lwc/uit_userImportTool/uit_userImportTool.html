@@ -2,7 +2,7 @@
     <lightning-card>
         <p slot="title" class="slds-text-heading--medium slds-text-title_bold">User Import Tool</p>
         <div class="slds-p-around--small">
-            <template if:false={isDataRecived}>
+            <template if:false={isDataReceived}>
                 <div class="slds-p-bottom--medium">
                     <p class="slds-text-heading--small">Click <strong>[Import]</strong> button to start Import process</p>
                 </div>
@@ -10,12 +10,12 @@
             <template if:true={isLoading}>
                 <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
             </template>
-            <template if:false={isDataRecived}>
+            <template if:false={isDataReceived}>
                 <div slot="footer" class="slds-text-align--center">
                     <lightning-button variant="brand" label="Import" onclick={handleImportData}></lightning-button>
                 </div>
             </template>
-            <template if:true={isDataRecived}>
+            <template if:true={isDataReceived}>
                 <div class="slds-p-bottom--small">
                     <p class="slds-text-heading--medium slds-text-title_bold">Import Results:</p>
                     <p class="slds-text-heading--small">Imported Records: <strong>{importResult.importedRecords}</strong></p>
