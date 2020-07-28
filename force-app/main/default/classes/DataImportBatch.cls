@@ -33,8 +33,10 @@ global class DataImportBatch implements Database.Batchable<Integer>, Database.St
         List<UIT_User__c> users = new List<UIT_User__c>();
         for (Integer i : values) {
             UserWrapClass response = makeCallout(CURRENT_PAGE);
-            List<UserWrapClass.UitUser> wrappedUsers = response.uit_users;
-            users.addAll(getUsers(wrappedUsers));
+            if (response != null) {
+                List<UserWrapClass.UitUser> wrappedUsers = response.uit_users;
+                users.addAll(getUsers(wrappedUsers));
+            }
             CURRENT_PAGE++;
         }
         upsertUitUsers(users);
