@@ -65,8 +65,11 @@ public with sharing class UserImportServiceClass {
     }
 
     private with sharing class ImportResultData {
-        private Integer importedRecords = 0;
-        private Integer updatedRecords = 0;
-        private String importStatus = 'ERROR';
+        @AuraEnabled
+        public Integer importedRecords = 0;
+        @AuraEnabled
+        public Integer updatedRecords = 0;
+        @AuraEnabled
+        public String importStatus = 'ERROR';
     }
 }
