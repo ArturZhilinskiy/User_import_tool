@@ -20,7 +20,6 @@ export default class Uit_userImportTool extends NavigationMixin(LightningElement
         importUsers()
             .then(result => {
                 this.importResult = result;
-                
                 this.isLoading=false;
                 this.isDataRecived = true;
             })
@@ -34,13 +33,6 @@ export default class Uit_userImportTool extends NavigationMixin(LightningElement
                 this.isLoading=false;
                 this.isDataRecived = true;
             });
-
-        // setTimeout(() => {
-        //     this.isLoading = false;
-        //     this.isDataRecived = true;
-        // }, 2000);
-
-        
     }
 
     handleViewRecords() {
