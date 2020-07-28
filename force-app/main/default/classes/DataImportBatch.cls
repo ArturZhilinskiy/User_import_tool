@@ -80,17 +80,21 @@ global class DataImportBatch implements Database.Batchable<Integer>, Database.St
         }
     }
     global void finish(Database.BatchableContext context) {
+        List<UIT_Import_Event__e> events = new List<UIT_Import_Event__e>();
+        events.add(new UIT_Import_Event__e( 
+            importedRecords__c = resultData.importedRecords,
+            updatedRecords__c = resultData.updatedRecords,
+            errors__c = resultData.errors,
+            importStatus__c = resultData.importStatus
+        ));
         
+        EventBus.publish(events);
     }
 
     private with sharing class ImportResultData {
-        @AuraEnabled
         public Integer importedRecords = 0;
-        @AuraEnabled
         public Integer updatedRecords = 0;
-        @AuraEnabled
         public Integer errors = 0;
-        @AuraEnabled
         public String importStatus = 'ERROR';
     }
 }
