@@ -44,10 +44,10 @@ export default class Uit_userImportTool extends NavigationMixin(LightningElement
         })
         .catch(error => {
             this.importResult = {
-                'importedRecords' : 0,
-                'updatedRecords' : 0,
-                'errors' : 0,
-                'importStatus' : 'Error: ' + error.body.message + ' ' + error.body.stackTrace
+                importedRecords : 0,
+                updatedRecords : 0,
+                errors : 0,
+                importStatus : 'Error: ' + error.body.message + ' ' + error.body.stackTrace
             };
             console.log(error);
             this.isLoading = false;
